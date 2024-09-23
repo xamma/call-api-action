@@ -40,7 +40,7 @@ jobs:
       # Use the call-api-action
       - name: Get data from API
         id: api_call
-        uses: xamma/call-api-action@master
+        uses: xamma/call-api-action@v1.0.0
         with:
           api-url: 'https://pokeapi.co/api/v2/pokemon'  # URL of the RestAPI
           http-method: 'GET'  # Use GET HTTP Method
