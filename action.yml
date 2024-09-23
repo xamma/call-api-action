@@ -1,0 +1,33 @@
+name: 'API Call Action'
+description: 'Makes HTTP requests to an RestAPI.'
+inputs:
+  api-url:
+    description: 'RestAPI URL'
+    required: true
+  headers:
+    description: 'Headers for the API call'
+    required: false
+    default: ''
+  http-method:
+    description: 'HTTP method to use for the API call'
+    required: true
+  request-body:
+    description: 'Body in JSON format to send to the API'
+    required: false
+    default: ''
+  query-params:
+    description: 'Query params to use for the API request'
+    required: false
+    default: ''
+outputs:
+  response_data:
+    description: 'The data returned from the API call'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    API_URL: ${{ inputs.api-url }}
+    HEADERS: ${{ inputs.headers }}
+    HTTP_METHOD: ${{ inputs.http-method }}
+    REQUEST_BODY: ${{ inputs.request-body }}
+    QUERY_PARAMS: ${{ inputs.query-params }}
