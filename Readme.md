@@ -55,6 +55,12 @@ jobs:
 
       - name: Get specific data
         run: |
-          first_pokemon_name=$(echo ${{ steps.api_call.outputs.response_data }} | jq -r '.results[0].name')
+          first_pokemon_name=$(echo "${{ steps.api_call.outputs.response_data }}" | jq -r '.results[0].name')
           echo "First Pokemon Name: $first_pokemon_name"
+          echo "POKE_NAME=$first_pokemon_name" >> $GITHUB_ENV
+
+      # global usable ENV var
+      - name: Use the ENV var
+        run: |
+          echo "The Pokemon name stored in ENV variable is: $POKE_NAME"
 ```
