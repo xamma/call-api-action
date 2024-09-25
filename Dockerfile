@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir --target=/app -r /app/requirements.txt
 
 COPY src/main /app
 
-FROM gcr.io/distroless/python3-debian12
+FROM gcr.io/distroless/python3-debian12:nonroot
 
 COPY --from=builder /app /app
 
